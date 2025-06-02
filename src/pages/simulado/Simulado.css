@@ -1,0 +1,494 @@
+/* Estilos Base do Simulado e Gerais */
+.simulado-container {
+  width: 80%; /* Largura em telas maiores */
+  margin: 20px auto; /* Centraliza em telas maiores */
+  background-color: #525050;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #f0f0f0; /* Cor de texto padrão clara */
+  border-radius: 8px;
+  box-sizing: border-box; /* Importante para consistência no cálculo de tamanho */
+  /* Para centralizar os blocos filhos diretos (como Timer, Painel, Questão): */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.simulado-container h1 { /* Títulos como "Modo Treino", "Resultado do Simulado" */
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 25px;
+  width: 100%; /* Ocupa largura para text-align funcionar bem no flex item */
+}
+
+/* Container do link "Página Inicial" NO TOPO da página */
+.link-home-container {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.link-estilizado { 
+  text-decoration: none;
+  font-size: 1em;
+  padding: 5px 10px;
+  display: inline-block;
+}
+
+.link-estilizado:hover {
+  text-decoration: underline;
+  color: #ffffff; 
+}
+
+.simulado-timer {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+  width: 100%; /* Garante que text-align funcione bem no flex item */
+}
+
+.simulado-questao {
+  margin-bottom: 20px;
+  width: 100%; /* Ocupa a largura disponível dentro do .simulado-container */
+  max-width: 700px; /* Limita a largura da área da questão, se desejar */
+}
+
+.simulado-questao h2 { /* Enunciado da questão */
+  color: #f5f5f5;
+  font-size: 1.3em; /* Tamanho para desktop */
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: left; /* Padrão para desktop. Será alterado em mobile. */
+}
+
+.simulado-alternativas {
+  display: flex;
+  flex-direction: column;
+}
+
+.simulado-alternativa {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border: 1px solid #777;
+  cursor: pointer;
+  background-color: #998a8a; 
+  color: #1f1f1f;      
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: left;
+  font-size: 1em;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.simulado-alternativa:hover:not(:disabled) {
+  background-color: #b0a2a2; 
+  color: #000000;
+  border-color: #888;
+}
+
+.simulado-alternativa.selecionada { /* Seleção no Simulado */
+  background-color: #7c96a7; 
+  border-color: #9cb0be;
+  color: #ffffff;
+}
+
+/* Feedback no Treino */
+.simulado-alternativa.correta { 
+  background-color: #38761d !important; 
+  border-color: #6aa84f !important;
+  color: #ffffff !important; 
+  font-weight: bold;
+}
+
+.simulado-alternativa.errada-selecionada { 
+  background-color: #a61c00 !important; 
+  border-color: #cc4125 !important;
+  color: #ffffff !important; 
+}
+
+/* Painel de Questões */
+.painel-questoes-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #5f5d5d;
+  width: 100%;
+  max-width: 700px; /* Limita a largura do painel */
+  box-sizing: border-box;
+}
+
+.painel-questoes-container h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #f0f0f0;
+}
+
+.painel-questao-item {
+  margin: 3px;
+  padding: 6px 10px;
+  border: 1px solid #888;
+  background-color: #7c7a7a;
+  color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 4px;
+  min-width: 30px;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.painel-questao-item:hover {
+  background-color: #918f8f;
+  border-color: #aaa;
+}
+
+.painel-questao-item.respondida {
+  background-color: #028026; 
+  border-color: #b7e4c7;
+  color: #ffffff;
+}
+
+.painel-questao-item.nao-respondida { 
+  background-color: #7c7a7a; /* Cor base. Sua original era #fff0f100 (transparente) */
+  border-color: #888; /* Se usar fundo transparente, use #ffd9dc */
+}
+
+.painel-questao-item.atual {
+  background-color: #046dc3; 
+  border-color: #9fceff;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+/* Navegação Principal (Botões Anterior/Próxima e Link Home em mobile) */
+.simulado-navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-top: 20px;
+  width: 100%; /* Para ocupar a largura dentro do flex container pai */
+  max-width: 700px; /* Para consistência com .simulado-questao e .painel-questoes-container */
+  box-sizing: border-box;
+}
+
+.simulado-navegacao button {
+  padding: 10px 20px;
+  background-color: #4caf50; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  /* Em desktop, os botões não ocupam 100% da largura devido ao space-between */
+  /* Se precisar de largura fixa, defina aqui ou use flex-basis */
+}
+
+.simulado-navegacao button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.simulado-navegacao button:disabled {
+  background-color: #777575;
+  cursor: not-allowed;
+}
+
+/* Link "Página Inicial" que fica entre os botões em mobile */
+.link-home-entre-botoes-mobile {
+  display: none; /* Escondido em desktop nesta posição específica */
+}
+
+/* Resultado do Simulado */
+.simulado-resultado {
+  text-align: center;
+  margin-top: 20px;
+  background-color: #5f5d5d; 
+  padding: 20px;            
+  border-radius: 5px;
+  width: 100%;
+  max-width: 700px; /* Para consistência */
+  box-sizing: border-box;      
+}
+
+.simulado-resultado h2 { 
+  color: #ffffff; 
+}
+
+.simulado-resultado p { 
+  font-size: 1.1em;
+  color: #f0f0f0; 
+}
+
+.simulado-resultado button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.simulado-resultado button:hover {
+  background-color: #0056b3;
+}
+
+/* Feedback Container (Usado no Treino) */
+.feedback-container {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #5f5d5d;
+  border: 1px solid #777575;
+  width: 100%;
+  max-width: 700px; /* Para consistência */
+  box-sizing: border-box;
+}
+
+.feedback-container p { 
+  font-size: 1.25em; 
+  font-weight: bold;
+  margin: 0 0 15px 0;
+}
+
+.feedback-correto { 
+  color: #a5d6a7; 
+}
+
+.feedback-errado { 
+  color: #ef9a9a; 
+}
+
+.feedback-container button { 
+  padding: 10px 25px;
+  background-color: #4caf50; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.feedback-container button:hover {
+  background-color: #45a049;
+}
+
+/* Link "Voltar para Home" no Treino (usa .link-estilizado) */
+.voltar-home-link-treino { 
+  margin-top: 30px;
+  text-align: center;
+  width: 100%; /* Para ocupar a largura dentro do flex container pai */
+}
+
+/* Botão para alternar visibilidade do painel em mobile */
+.botao-toggle-painel-mobile {
+  display: none; /* Escondido em desktop por padrão */
+  width: 100%;   /* Ocupa a largura em mobile */
+  padding: 10px 15px;
+  margin-bottom: 15px; /* Espaço antes do painel (se visível) ou da questão */
+  background-color: #007bff; /* Cor azul, similar a outros botões de ação */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.botao-toggle-painel-mobile:hover {
+  background-color: #0056b3;
+}
+
+
+/* =============== RESPONSIVIDADE =============== */
+
+@media (max-width: 768px) {
+  .simulado-container {
+    width: 95%; 
+    padding: 15px; 
+    margin: 10px auto;
+    /* display: flex; flex-direction: column; align-items: center; já está na base */
+  }
+
+    .botao-toggle-painel-mobile {
+    display: block; /* Mostra o botão de toggle em mobile */
+  }
+
+  .painel-wrapper .painel-questoes-container {
+    display: none; 
+  }
+
+  .painel-wrapper.painel-mobile-ativo .painel-questoes-container {
+    display: block;
+  }
+
+  /* max-width para os filhos diretos pode ser ajustado aqui se necessário, ex: 95% da largura do .simulado-container */
+  .simulado-container h1,
+  .link-home-container,
+  .simulado-timer,
+  .painel-questoes-container,
+  .simulado-questao,
+  .simulado-navegacao,
+  .simulado-resultado,
+  .feedback-container,
+  .voltar-home-link-treino {
+    max-width: 100%; /* Permite que ocupem a largura do pai, respeitando o padding do pai */
+  }
+
+  .simulado-container h1 {
+    font-size: 1.8em;
+  }
+
+  .simulado-questao h2 { 
+    font-size: 1.15em; 
+    line-height: 1.4;
+    text-align: center; /* Centraliza enunciado em tablets e mobile */
+  }
+
+  .simulado-timer {
+    font-size: 1.1em;
+  }
+
+  .simulado-alternativa {
+    padding: 10px; 
+    font-size: 0.95em;
+  }
+
+  .painel-questoes-container {
+    padding: 8px;
+  }
+  .painel-questoes-container h4 {
+    font-size: 1em; 
+  }
+  .painel-questao-item {
+    padding: 5px 8px; 
+    font-size: 0.9em;
+    min-width: 28px;
+    margin: 2px;
+  }
+
+  .simulado-navegacao button,
+  .feedback-container button { 
+    padding: 8px 15px;
+    font-size: 0.95em;
+  }
+
+  .feedback-container p { 
+    font-size: 1.1em;
+  }
+
+  .link-estilizado { 
+    font-size: 0.95em;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .simulado-container {
+    width: 100%; /* Ocupa toda a largura da tela */
+    padding: 10px; /* Padding interno para o conteúdo não colar nas bordas */
+    border-radius: 0; 
+    margin: 0 auto; /* Centraliza se a viewport for maior que o conteúdo (improvável com width:100%) */
+    box-shadow: none; 
+    /* display: flex; flex-direction: column; align-items: center; já está na base */
+  }
+
+      .botao-toggle-painel-mobile {
+    display: block; /* Mostra o botão de toggle em mobile */
+  }
+
+  .painel-wrapper .painel-questoes-container {
+    display: none; 
+  }
+
+  .painel-wrapper.painel-mobile-ativo .painel-questoes-container {
+    display: block;
+  }
+
+  .simulado-container h1 {
+    font-size: 1.5em; 
+    margin-bottom: 15px;
+  }
+
+  .simulado-questao h2 { /* Enunciado já centralizado pela regra de 768px ou pode ser reafirmado */
+    font-size: 1em; 
+    margin-bottom: 15px;
+    text-align: center; /* Garante centralização */
+  }
+
+  .simulado-timer {
+    font-size: 1em;
+    margin-bottom: 15px;
+  }
+
+  .simulado-alternativa {
+    padding: 8px 10px; 
+    font-size: 0.9em;
+    margin-bottom: 8px;
+  }
+
+  .painel-questao-item {
+    padding: 4px 6px;
+    font-size: 0.85em;
+    min-width: 25px;
+  }
+  
+  /* Container do link no TOPO em mobile */
+  .link-home-container { 
+      text-align: center; 
+      margin-bottom: 15px;
+      /* width: 100% e box-sizing já estão na base */
+  }
+
+  /* Navegação dos botões e link "Página Inicial" ENTRE eles */
+  .simulado-navegacao {
+    flex-direction: column; 
+    align-items: center;   
+    gap: 15px;             
+    /* max-width: 100%; (já é o padrão para ocupar o espaço do pai flex) */
+  }
+
+  .simulado-navegacao button {
+    width: 100%; 
+    padding: 12px; 
+    font-size: 1em;
+  }
+  
+  .link-home-entre-botoes-mobile { 
+    display: block; 
+    width: auto; 
+    text-align: center; 
+  }
+
+  .simulado-resultado h2 {
+    font-size: 1.3em;
+  }
+  .simulado-resultado p {
+    font-size: 1em;
+  }
+  .simulado-resultado button {
+    width: 80%; 
+    padding: 12px;
+  }
+
+  /* Feedback do Treino */
+  .feedback-container {
+    padding: 10px;
+    /* max-width: 100%; (já é o padrão para ocupar o espaço do pai flex) */
+  }
+  .feedback-container p {
+    font-size: 1em;
+  }
+  .feedback-container button { 
+    width: 100%; 
+    padding: 12px;
+    font-size: 1em;
+  }
+}

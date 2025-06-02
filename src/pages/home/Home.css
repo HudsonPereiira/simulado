@@ -1,0 +1,74 @@
+.home-container {
+  display: flex;
+  flex-direction: column; /* Empilha os elementos filhos (h1, p, nav) */
+  align-items: center;   /* Centraliza horizontalmente os elementos filhos */
+  justify-content: center; /* Centraliza verticalmente todo o conteúdo na viewport (se min-height estiver ativo) */
+  min-height: 80vh;      /* Garante que o conteúdo fique mais ou menos no centro da tela verticalmente */
+  text-align: center;    /* Centraliza o texto dentro de h1, p e outros elementos de texto */
+  padding: 20px;
+  box-sizing: border-box; /* Importante para que padding não afete a largura calculada */
+}
+
+.home-container h1 {
+  font-size: 2.2em; 
+  margin-bottom: 15px;
+  color: #f0f0f0; /* Se o fundo da sua app for escuro, como na imagem */
+}
+
+.home-container p {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  max-width: 500px; /* Limita a largura do parágrafo para melhor legibilidade */
+  line-height: 1.6;
+  color: #dcdcdc; /* Se o fundo da sua app for escuro */
+}
+
+/* Container dos botões de navegação */
+.home-navigation {
+  display: flex;
+  flex-direction: column; /* Botões sempre empilhados verticalmente */
+  align-items: center;   /* Centraliza os botões (se eles não tiverem width: 100%) */
+  gap: 15px;             /* Espaço entre os botões */
+  width: 100%;           /* Faz o container dos botões tentar ocupar a largura disponível... */
+  max-width: 350px;      /* ...mas limita essa largura para não ficarem excessivamente largos. Ajuste conforme necessário. */
+                           /* Este max-width garante que o bloco de botões tenha uma largura consistente e seja centralizado */
+}
+
+.home-link-button {
+  display: block; /* Faz o link se comportar como um bloco para ocupar a largura total do pai */
+  width: 100%;    /* Ocupa 100% da largura do seu pai (.home-navigation) */
+  padding: 15px 20px;
+  font-size: 1.1em;
+  text-decoration: none;
+  text-align: center; /* Garante que o texto dentro do botão está centralizado */
+  color: white;
+  background-color: #007bff; /* Azul dos botões na imagem */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.home-link-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media queries para refinar fontes e espaçamentos em telas muito pequenas, se necessário */
+@media (max-width: 480px) {
+  .home-container h1 {
+    font-size: 1.8em;
+  }
+  .home-container p {
+    font-size: 1em;
+    margin-bottom: 25px;
+  }
+  .home-navigation {
+    gap: 12px; /* Espaço um pouco menor entre botões */
+    max-width: 90%; /* Ajusta a largura máxima para telas bem pequenas, ex: 300px ou 90% */
+  }
+  .home-link-button {
+    padding: 12px 15px;
+    font-size: 1em;
+  }
+}
