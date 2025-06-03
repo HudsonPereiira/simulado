@@ -6,7 +6,7 @@ import Questoes from '../../components/questoes/Questoes';
 // Certifique-se de que este caminho está correto para a sua estrutura de pastas.
 // Se Treino.js está em 'src/pages/' e simulado.css em 'src/components/Simulado/',
 // o caminho seria '../components/Simulado/simulado.css'
-import '../Simulado/simulado.css';
+import '../simulado/Simulado.css';
 
 function Treino() {
   const [questoesOriginais, setQuestoesOriginais] = useState([]);
