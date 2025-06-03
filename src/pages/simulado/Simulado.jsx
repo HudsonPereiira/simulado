@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import './simulado.css';
+import './Simulado.css';
 import QuestoesSource from '../../components/questoes/Questoes'; // Ajuste o caminho se necessário
 
 // ... (Componentes PainelQuestoes, Questao, Resultado, Timer e função shuffleArray permanecem os mesmos da última versão) ...
